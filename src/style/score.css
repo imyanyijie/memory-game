@@ -1,0 +1,9 @@
+.score-section {
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2dvb;
+    color: black;
+}

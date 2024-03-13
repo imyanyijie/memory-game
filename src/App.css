@@ -1,42 +1,63 @@
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: 100vh;
+  margin: 0rem;
+}
+
+header {
+  width: 100%;
+  margin: 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 3rem;
+  background-color: rgb(113, 111, 243);
+}
+
+header > img {
+  height: 4rem;
+  width: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: 1rem 1rem;
+  color: whitesmoke
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  flex: 0.1;
+}
+main h1{
+  color: black;
   text-align: center;
+
+}
+.game-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+  overflow: auto;
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(auto-fill, 15rem);
+  gap: 2rem;
+  justify-content: center;
+  transition: all 1s ease-in;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+footer {
+  position: fixed;
+  bottom: .5rem;
+  text-align: center;
+  padding: 1rem 1rem;
+  color: rgb(62, 57, 185);
 }

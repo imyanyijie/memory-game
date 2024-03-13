@@ -1,0 +1,17 @@
+.game-card{
+    background-color: aqua;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-card:active{
+    background-color: rgba(0, 255, 255, 0.555);
+}
+
+.game-card:hover{
+    box-shadow: 10px 5px 5px blue;
+    
+}
