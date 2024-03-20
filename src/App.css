@@ -41,18 +41,6 @@ main h1{
   text-align: center;
 
 }
-.game-section {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 6rem;
-  overflow: auto;
-  display: grid;
-  width: 95%;
-  grid-template-columns: repeat(auto-fill, 15rem);
-  gap: 2rem;
-  justify-content: center;
-  transition: all 1s ease-in;
-}
 
 footer {
   position: fixed;

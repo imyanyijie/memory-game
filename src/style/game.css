@@ -1,17 +1,12 @@
-.game-card{
-    background-color: aqua;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+.game-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+    overflow: auto;
+    display: grid;
+    width: 95%;
+    grid-template-columns: repeat(auto-fill, 15rem);
+    gap: 2rem;
     justify-content: center;
-    align-items: center;
-}
-
-.game-card:active{
-    background-color: rgba(0, 255, 255, 0.555);
-}
-
-.game-card:hover{
-    box-shadow: 10px 5px 5px blue;
-    
-}
+    transition: all 1s ease-in;
+  }
