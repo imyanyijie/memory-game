@@ -1,0 +1,17 @@
+.game-end{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+
+.game-end button{
+    font-size: 2rem;
+    align-self: center;
+    height: 5rem;
+    width: 10rem;
+    background-color: aqua;
+    border-radius: 10px;
+}

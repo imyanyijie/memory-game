@@ -1,34 +1,48 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import "../style/game.css"
 import { Card } from './Card'
+import { DataFetch } from '../service/DataFetch';
 
-function Game({pokemons, setCurrentScore, setBestScore}){
+
+function Game({setCurrentScore, score, setBestScore, bestScore, setGameEnd}){
     console.log("render game section");
-    
-    const [cards, setCards] = useState([...pokemons]);
+    const [cards, setCards] = useState([]);
     const [selectedCards, setSelectedCards] = useState([]);
 
-    console.log(cards)
+    let offsetNum = Math.random()*1000;
+    useEffect(() => {
+      (async function getPokemons() {
+        const data = await DataFetch(offsetNum);
+        console.log("fetching data")
+        setCards(data.results);
+      })();
+    }, [bestScore]);
+    
+    //randomly postion cards
     const shuffleCards = ()=>{
-        let cardList = pokemons
+        let cardList = cards
             .map((value) => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
             .map(({ value }) => value);
         setCards(cardList);
     }
-    const handleClick = (e)=>{
-        console.log("card clicked")
-        let name = e.target.name;
+
+    const handleClick = (name)=>{
+        console.log("card clicked"+name)
         if(selectedCards.includes(name)){
             //game end logic
-            console.log("game end ")
+            console.log("game end "+selectedCards.length)
+            setBestScore(score);
             setCurrentScore(0);
-            
-
+            setSelectedCards(selectedCards => [])
+            setGameEnd(true);
         }
-        setSelectedCards([...selectedCards, name]);
-        setCurrentScore(score => score + 1);
-        shuffleCards();
+        else{
+            setSelectedCards([...selectedCards, name]);
+            setCurrentScore(score => score+1);
+            shuffleCards();
+        }
+
     }
      return(
         <div className='game-section' >
@@ -42,5 +56,4 @@ function Game({pokemons, setCurrentScore, setBestScore}){
         </div>
      )
 }
-
 export{Game}

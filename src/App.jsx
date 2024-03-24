@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { Score } from './Component/Score'
 import { Game } from './Component/Game'
-import { DataFetch } from './service/DataFetch'
+import { GameEnd } from './Component/GameEnd'
 
 /*TODO:
 App will reload only when game change. when game end/bestscore need to be updated. repull all the data
@@ -13,19 +13,10 @@ whe
 */ 
 function App() {
   const [bestScore, setBestScore] = useState(0);
-  const [pokemons, setPokemons] = useState([]);
   const [current, setCurrentScore] = useState(0);
+  const [gameEnd, setGameEnd] = useState(false);
+
   console.log("load app");
-  let offsetNum = Math.random()*1000;
-  useEffect(() => {
-    (async function getPokemons() {
-      const data = await DataFetch(offsetNum);
-      console.log("fetching data")
-      setPokemons(data.results);
-    })();
-  }, [bestScore]);
-
-
   return (
     <>
       <header>
@@ -37,8 +28,11 @@ function App() {
       </header>
       <main id="gameContainer">
         <h1 id="instruction">Select a Pokemon! <br />Please remember your choice. You get points for selecting pokemon you never seen before.</h1>
-        <Game pokemons ={pokemons} setBestScore = {setBestScore}  setCurrentScore = {setCurrentScore}/>
-
+        { gameEnd ? (
+          <GameEnd setGameEnd={setGameEnd} bestScore={bestScore} />
+        ) : (
+          <Game  setCurrentScore = {setCurrentScore} score={current} setBestScore = {setBestScore}  bestScore={bestScore} setGameEnd={setGameEnd}/>
+        )}
         <Score score={current} bestScore={bestScore}/>
       </main>
       <footer>Front-end project.</footer>
